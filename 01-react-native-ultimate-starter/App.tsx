@@ -1,21 +1,28 @@
 import { useState } from "react";
-import { Button, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Button,
+  FlatList,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 
 export default function App() {
   const [nameTodo, setNameTodo] = useState<string>("");
 
   const [todoList, setTodoList] = useState([
-    { id: 1, title: "Learn react native 1" },
-    { id: 2, title: "Learn react native 2" },
-    { id: 3, title: "Learn react native 3" },
-    { id: 4, title: "Learn react native 4" },
-    { id: 5, title: "Learn react native 5" },
-    { id: 6, title: "Learn react native 6" },
-    { id: 7, title: "Learn react native 7" },
-    { id: 8, title: "Learn react native 8" },
-    { id: 9, title: "Learn react native 9" },
-    { id: 10, title: "Learn react native 10" },
-    { id: 11, title: "Learn react native 11" },
+    { id: 1, title: "Learn react native 1", key: "nvminh" },
+    { id: 2, title: "Learn react native 2", key: "nvminh" },
+    { id: 3, title: "Learn react native 3", key: "nvminh" },
+    { id: 4, title: "Learn react native 4", key: "nvminh" },
+    { id: 5, title: "Learn react native 5", key: "nvminh" },
+    { id: 6, title: "Learn react native 6", key: "nvminh" },
+    { id: 7, title: "Learn react native 7", key: "nvminh" },
+    { id: 8, title: "Learn react native 8", key: "nvminh" },
+    { id: 9, title: "Learn react native 9", key: "nvminh" },
+    { id: 10, title: "Learn react native 10", key: "nvminh" },
+    { id: 11, title: "Learn react native 11", key: "nvminh" },
   ]);
 
   return (
@@ -40,11 +47,44 @@ export default function App() {
           <Text style={styles.todoName}> {nameTodo} </Text>
         </Text>
       </View>
-      <ScrollView>
+      {/* <ScrollView>
         {todoList.map((todo) => (
           <Text key={todo.id} style={styles.todo}>{todo.title}</Text>
         ))}
-      </ScrollView>
+      </ScrollView> */}
+      <FlatList /* default flatList get key: key is key */
+        style={{ marginVertical: 10 }}
+        data={todoList}
+        keyExtractor={(item) => item.id + ""}
+        renderItem={({ item }) => {
+          /* console.log(data); */
+          /* data back example =>
+            {
+              "index": 0,
+              "item": {
+                "id": 1,
+                "title": "Learn react native 1"
+              },
+              "separators": {
+                "highlight": [Function highlight],
+                "unhighlight": [Function unhighlight],
+                "updateProps": [Function updateProps]
+              }
+            }
+          */
+          /* 
+            use Object Destructuring => data = { index, item, separators }
+          */
+          return (
+            <Text
+              style={styles.todo}
+              // key={item.id}
+            >
+              {item.title}
+            </Text>
+          );
+        }}
+      />
     </View>
   );
 }
@@ -53,7 +93,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 30,
     color: "red",
-    marginVertical: 20,
   },
   todoName: {
     color: "green",
