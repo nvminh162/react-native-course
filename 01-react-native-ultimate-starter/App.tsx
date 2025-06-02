@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import { Button, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 
 export default function App() {
   const [nameTodo, setNameTodo] = useState<string>("");
@@ -40,11 +40,11 @@ export default function App() {
           <Text style={styles.todoName}> {nameTodo} </Text>
         </Text>
       </View>
-      <View>
+      <ScrollView>
         {todoList.map((todo) => (
           <Text key={todo.id} style={styles.todo}>{todo.title}</Text>
         ))}
-      </View>
+      </ScrollView>
     </View>
   );
 }
