@@ -17,8 +17,11 @@ const ListTodo = (props: IProps) => {
         keyExtractor={(item) => item.id + ""}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity onPress={() => deleteTodo(item.id)}>
-              <Text style={styles.todo}>{item.title}</Text>
+            <TouchableOpacity
+              style={styles.todo}
+              onPress={() => deleteTodo(item.id)}
+            >
+              <Text>{item.title}</Text>
             </TouchableOpacity>
           );
         }}

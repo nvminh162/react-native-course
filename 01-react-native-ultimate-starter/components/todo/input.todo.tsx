@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import { Alert, Button, StyleSheet, Text, TextInput, View } from "react-native";
 
 const InputTodo = (props: IProps) => {
   const [nameTodo, setNameTodo] = useState<string>("");
@@ -7,7 +7,23 @@ const InputTodo = (props: IProps) => {
   const { addTodo } = props;
 
   const handleAddNewTodo = () => {
+    if (!nameTodo) {
+      Alert.alert("Lỗi", "Thông tin không hợp lệ!", [
+        {
+          text: "CANCEL",
+          style: "cancel",
+          onPress: () => console.log("KO con dê"),
+        },
+        {
+          text: "OK",
+          style: "default",
+          onPress: () => console.log("Ok con dê"),
+        },
+      ]);
+      return;
+    }
     addTodo(nameTodo);
+    setNameTodo("");
   };
 
   return (
@@ -21,7 +37,11 @@ const InputTodo = (props: IProps) => {
           autoCapitalize="none"
           autoCorrect={false}
         />
-        <Button title="Add New" color={"red"} onPress={handleAddNewTodo} />
+        <Button
+          title="Add New"
+          color={"red"}
+          onPress={() => handleAddNewTodo()}
+        />
       </View>
     </>
   );
