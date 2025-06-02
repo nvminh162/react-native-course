@@ -1,8 +1,14 @@
 import { useState } from "react";
 import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
-const InputTodo = () => {
+const InputTodo = (props: IProps) => {
   const [nameTodo, setNameTodo] = useState<string>("");
+
+  const { addTodo } = props;
+
+  const handleAddNewTodo = () => {
+    addTodo(nameTodo);
+  };
 
   return (
     <>
@@ -15,7 +21,7 @@ const InputTodo = () => {
           autoCapitalize="none"
           autoCorrect={false}
         />
-        <Button title="Add New" color={"red"} onPress={() => alert(nameTodo)} />
+        <Button title="Add New" color={"red"} onPress={handleAddNewTodo} />
       </View>
     </>
   );
@@ -33,5 +39,9 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
 });
+
+interface IProps {
+  addTodo: (v: string) => void;
+}
 
 export default InputTodo;
