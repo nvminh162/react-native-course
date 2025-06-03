@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "react-native-bottom-tab",
-    "slug": "react-native-bottom-tab",
+    "name": "react-navigate-bottom-tab",
+    "slug": "react-navigate-bottom-tab",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
