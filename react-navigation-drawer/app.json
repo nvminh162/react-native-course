@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "flex-box",
-    "slug": "flex-box",
+    "name": "react-navigation-drawer",
+    "slug": "react-navigation-drawer",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
