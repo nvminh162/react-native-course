@@ -1,11 +1,11 @@
 import { Text, View } from "react-native";
 
-const LikeDetail = () => {
+const Product = () => {
   return (
     <View>
-      <Text>LikeDetail</Text>
+      <Text>Product Screen</Text>
     </View>
   );
 };
 
-export default LikeDetail;
+export default Product;
